@@ -1,9 +1,15 @@
 // The El at the end of this buttonEl variable represents that it is a DOM element (Document Object  Model) Naming it ButtonEl helps you keep track of which variables store DOM elements.
-var buttonEl = document.querySelector("#save-task");
+//var buttonEl = document.querySelector("#save-task");
+
+var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
 // This function handles the task of making the new li element and adding a class to it and appending it to the ul so it doesn't have to get jumbled up in the addEventListener.
-var createTaskHandler = function() {
+var createTaskHandler = function(event) {
+
+    // The event.preventDefault makes sure the browser doesn't reload the page everytime the function is called.
+    event.preventDefault();
+
     // This variable creates a new li element.
     var listItemEl = document.createElement("li");
     // This .className assigns the listItemEl variable a class so it is styled correctly.
@@ -14,8 +20,11 @@ var createTaskHandler = function() {
     tasksToDoEl.appendChild(listItemEl);
 };
 
+// The on submit listens for either a button to be clicked with a type attribute value of submit or when a user presses enter on their keyboard.
+formEl.addEventListener("submit", createTaskHandler);
+
 // The addEventListener method can be used by an element object- in this case the buttonEl object.
-buttonEl.addEventListener("click", createTaskHandler);
+// buttonEl.addEventListener("click", createTaskHandler);
     
 
 
